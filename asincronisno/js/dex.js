@@ -7,6 +7,7 @@ const nameCountry = document.getElementById('nameCountry');
 const city = document.getElementById('city');
 const temp = document.getElementById('temp');
 const wind = document.getElementById('wind');
+const icon = document.getElementsByTagName('img');
 const APIKEY = '6637faa8d9e38591343e0d4ba75bd213';
 
 
@@ -31,6 +32,8 @@ btnSearch.addEventListener('click', () => {
         city.innerText = respuestaDelClima.name
         temp.innerText = (respuestaDelClima.main.temp - 273.15).toFixed(2)
         wind.innerText = respuestaDelClima.wind.speed
+        const iconWeather = respuestaDelClima.weather[0].icon;
+        icon[0].setAttribute('src', `https://openweathermap.org/img/wn/${iconWeather}@2x.png`)
 
     })
     .catch((error) => console.log(error));
